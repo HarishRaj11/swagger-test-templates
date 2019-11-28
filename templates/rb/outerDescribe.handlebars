@@ -3,6 +3,9 @@ require 'rest-client'
 require 'json-schema'
 require 'httparty'
 require 'safe_yaml'
+require "#{__dir__}/{{schemaFile}}.rb"
+
+schema_object = {{schemaClass}}.new
 
 describe '{{description}}' do
     before(:all) do

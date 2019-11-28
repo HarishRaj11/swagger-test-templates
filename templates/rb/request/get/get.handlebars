@@ -1,10 +1,4 @@
   it 'should respond with {{length description}}{{#if requestMessage}} and {{requestMessage}}{{/if}}' do
-      {{#validateResponse returnType noSchema}}
-
-      {{> schema-partial this}}
-
-
-      {{/validateResponse}}
       response = RestClient.get(
         URI.join($ENDPOINT, '{{pathify path pathParams}}').to_s,
         {
@@ -40,7 +34,7 @@
 
         {{#validateResponse returnType noSchema}}
         {{#is assertion 'expect'}}
-        expect(JSON::Validator.validate(schema, parsed_response)).to eq(true)
+        expect(JSON::Validator.validate(schema_object.getSchema_{{operation}}_{{responseCode}}(), parsed_response)).to eq(true)
         {{/is}}
         {{#is assertion 'should'}}
         validator.validate(body, schema).should.be.true
